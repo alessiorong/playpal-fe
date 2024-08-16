@@ -1,0 +1,17 @@
+<div class="m-4">
+    <div id="dettagli">Dettagli Squadra</div>
+    <div id="team">
+        <table class="table table-striped-columns">
+            <tbody>
+                <tr><td>NOME:</td><td>{{team?.name}}</td></tr>
+                <tr><td>CATEGORIA:</td><td>{{team?.category}}</td></tr>
+            </tbody>
+        </table>  
+    </div>
+    <button class="btn btn-danger" routerLink="delete-team">Elimina</button>
+    <button id="mostra" [routerLink]="['/gamelist', team?.id]">Mostra la lista delle partite</button>
+    <button id="mostra" [routerLink]="['/playerlist', team?.id]">Mostra rosa giocatori</button>
+    <button id="modifica" [routerLink]="['/change-category', team?.id]">Modifica Categoria</button>
+    <button class="btn btn-secondary mt-3" [routerLink]="'/'">Torna alla Home</button>
+</div>
+

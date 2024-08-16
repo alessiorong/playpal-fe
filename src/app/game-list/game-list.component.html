@@ -1,0 +1,30 @@
+<div id="gamelist"><h3>Playerlist</h3></div>
+
+<div class="gamelistContainer">
+    <table class="table table-striped m-4">
+        <thead>
+            <tr id="intestation">
+                <th>Game Day</th>
+                <th>Avvesario</th>
+                <th>Risultato</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="tabody">
+            @for (g of gamelist; track g.id){
+                <tr>
+                    <td>{{g.gameDay}}</td>
+                    <td>{{g.oppositeTeam}}</td>
+                    <td>{{g.result}}</td>
+                    <td><button type="button" class="btn btn-outline-danger" [routerLink] = "['/statistics', g.id]">vedi stats</button></td> 
+                    <td><button type="button" class="btn btn-outline-danger" [routerLink] = "['/delete-game', teamId, g.id]">elimina</button></td>
+                    <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/change-result', g.id]">Cambia Risultato</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+<button id="aggiungi" [routerLink]="['/add-game', teamId]">AGGIUNGI NUOVO UNA NUOVA PARTITA</button>
+<button type="button" class="btn btn-secondary mt-3" [routerLink]="['/team', teamId]">Annulla</button>
+</div>

@@ -1,0 +1,50 @@
+<div id="statistics"><h2>Statistiche Giocatori Di Questa Partita</h2></div>
+
+
+<div class="statisticsContainer">
+    <table class="table table-striped m-4">
+        <thead>
+          <tr id="intestation">
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Punti</th>
+            <th>Assist</th>
+            <th>Rimbalzi</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tabody">
+            @for (p of playerStats; track p.id) {
+                <tr>
+                   <td>{{p.playerFirstname}}</td>
+                   <td>{{p.playerLastname}}</td> 
+                    <td>{{p.points }}</td>
+                    <td>{{p.assist }}</td>
+                    <td>{{p.rebound}}</td>
+                    
+                    <td>
+                        <button (click)="addPoints(p.id, 1)" class="btn btn-primary btn-sm">+1 Punto</button>
+                        <button (click)="addPoints(p.id, 2)" class="btn btn-primary btn-sm">+2 Punti</button>
+                        <button (click)="addPoints(p.id, 3)" class="btn btn-primary btn-sm">+3 Punti</button>
+                        <button (click)="addAssist(p.id, 1)" class="btn btn-secondary btn-sm">+1 Assist</button>
+                        <button (click)="addRebound(p.id, 1)" class="btn btn-secondary btn-sm">+1 Rimbalzo</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+      </table>
+</div>
+@if (players.length>0) {
+    <div  class="mb-3" >
+        
+        
+        <label for="playerSelect" class="form-label">Seleziona Giocatore:</label>
+        <select  id="playerSelect" [(ngModel)]="selectedPlayerId" class="form-select">
+            @for (player of players; track player.id) { 
+                <option [value]="player.id"> {{player.firstname}} {{player.lastname}}</option>
+            }
+        </select>
+        <button id="aggiungi" class="btn btn-primary mt-2" (click)="addPlayerStat()">Aggiungi</button>
+    </div>
+    }
+ 

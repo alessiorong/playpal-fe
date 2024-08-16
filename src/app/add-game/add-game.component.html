@@ -1,0 +1,23 @@
+@if(!isSubmitted){
+    <div id="newGame"><h3>Aggiungi una nuova partita</h3></div>
+    <div class="registerContainer">
+      <form #gameForm="ngForm" (ngSubmit)="onSubmit(gameForm)">
+    
+        <div class="form-group">
+          <label>*GameDay: <input type="date" name="gameDay" required ngModel></label>
+          <label>*OppositeTeam: <input type="text" name="oppositeTeam" required ngModel></label>
+          <input type="hidden" name="result" value="da giocare" ngModel>
+        </div>
+        <div>
+          <button id="submit" type="submit">CREA NUOVA PARTITA!</button>
+        </div>
+      </form>    
+    </div>
+    }
+    @if(isSubmitted){
+    <div id="alert" class="alert alert-success" role="alert">
+      <h4 class="alert-heading">Game created!</h4>
+      <h6>The game has been successfully created.</h6>
+      <hr>
+    </div>
+}

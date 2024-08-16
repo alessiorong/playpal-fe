@@ -1,0 +1,30 @@
+<div id="freePlayers"><h3>Free Players</h3></div>
+
+<div class="freePlayersContainer">
+    <table class="table table-striped m-4">
+        <thead>
+            <tr id="intestation">
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Data di Nascita</th>
+                <th>Posizione</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="tabody">
+            @for (f of freePlayerList; track f.id){
+                <tr>
+                    <td>{{f.firstname}}</td> 
+                    <td>{{f.lastname}}</td>
+                    <td>{{f.birthdate}}</td>
+                    <td>{{f.position}}</td>
+                    
+                    <td><button type="button" class="btn btn-outline-danger" [routerLink]="['/add-player', f.id, 'to-team', teamId]">seleziona</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <button type="button" class="btn btn-secondary mt-3" [routerLink]="['/team', teamId]">Annulla</button>
+</div>

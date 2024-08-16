@@ -1,0 +1,15 @@
+<div class="m-4">
+    <div id="dettagli">Dettagli giocatore</div>
+    <div id="player">
+        <table class="table table-striped-columns">
+            <tbody>
+                <tr><td>NOME:</td><td>{{player?.firstname}}</td></tr>
+                <tr><td>COGNOME:</td><td>{{player?.lastname}}</td></tr>
+                <tr><td>DATA DI NASCITA:</td><td>{{player?.birthdate}}</td></tr>
+                <tr><td>NUMERO DI MAGLIA:</td><td>{{player?.jerseyNumber}}</td></tr>
+                <tr><td>POSIZIONE:</td><td>{{player?.position}}</td></tr>
+            </tbody>
+        </table>  
+    </div>
+    <button class="btn btn-danger" routerLink="delete-player">Elimina</button>
+</div>

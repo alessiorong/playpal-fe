@@ -1,0 +1,34 @@
+<div id="playerlist"><h3>Playerlist</h3></div>
+
+<div class="playerlistContainer">
+    <table class="table table-striped m-4">
+        <thead>
+            <tr id="intestation">
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Data di Nascita</th>
+                <th>Numero</th>
+                <th>Posizione</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="tabody">
+            @for (p of playerlist; track p.id){
+                <tr>
+                    <td>{{p.firstname}}</td> 
+                    <td>{{p.lastname}}</td>
+                    <td>{{p.birthdate}}</td>
+                    <td>{{p.jerseyNumber}}</td>
+                    <td>{{p.position}}</td>
+                    
+                    <td><button type="button" class="btn btn-outline-danger" [routerLink] = "['/remove-player', p.id, teamId]">rimuovi</button></td>
+                    <td><button type="button" class="btn btn-outline-primary" [routerLink] = "['/average-stats', teamId, p.id]">Vedi Medie</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+<button id="aggiungi" [routerLink]="['/free-players', teamId]">AGGIUNGI NUOVO GIOCATORE</button>
+<button type="button" class="btn btn-secondary mt-3" [routerLink]="['/team', teamId]">Annulla</button>
+</div>

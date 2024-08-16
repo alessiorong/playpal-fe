@@ -1,0 +1,20 @@
+<div class="container">
+    <h3>Cambia la Categoria del Team</h3>
+    
+    <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)">
+      <div class="form-group">
+        <label for="categorySelect">Seleziona Categoria:</label>
+        <select id="categorySelect" [(ngModel)]="selectedCategory" name="category" class="form-control" required>
+          @for (category of categories; track category) {
+            <option [value]="category">
+            {{ category }}
+            </option>}
+            
+        </select>
+      </div>
+      
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="categoryForm.invalid">Aggiorna Categoria</button>
+      <button type="button" class="btn btn-secondary mt-3" [routerLink]="['/team', teamId]">Annulla</button>
+    </form>
+  </div>
+  

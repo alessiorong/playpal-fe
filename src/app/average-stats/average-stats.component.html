@@ -1,0 +1,16 @@
+<div class="average-stats-container">
+    <h2>Media Statistiche del Giocatore</h2>
+
+    @if (averageStats) {
+        <div>
+            <p>Media Punti: {{ averageStats.averagePoints }}</p>
+            <p>Media Assist: {{ averageStats.averageAssist }}</p>
+            <p>Media Rimbalzi: {{ averageStats.averageRebound }}</p>
+        </div>
+    } 
+
+    <div>
+        <button (click)="goBack()">Torna alla lista giocatori</button>
+    </div>
+    
+</div>

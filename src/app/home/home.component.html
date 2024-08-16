@@ -1,0 +1,30 @@
+<div class="home-container">
+    <h2>Benvenuto in PlayPal</h2>
+    
+    @if (teams.length >0) {
+        <div class="form-group">
+            <label for="teamSelect">Team:</label>
+            <select id="teamSelect" [(ngModel)]="selectedTeamId" class="form-control">
+              @for (team of teams; track team.id) {
+                <option [value]="team.id">
+                    {{ team.name }}
+                  </option>
+              }  
+            </select>
+        </div>
+    }
+   
+    
+    <button class="btn btn-primary mt-3" (click)="onSelectTeam()">Seleziona Team</button>
+  
+    <div class="mt-5">
+      <h3>Crea un Nuovo Giocatore</h3>
+      <button class="btn btn-success" (click)="onCreatePlayer()">Crea Nuovo Giocatore</button>
+    </div>
+  
+    <div class="mt-5">
+      <h3>Crea un Nuovo Team</h3>
+      <button class="btn btn-success mt-2" (click)="onCreateTeam()">Crea Nuovo Team</button>
+    </div>
+  </div>
+  
