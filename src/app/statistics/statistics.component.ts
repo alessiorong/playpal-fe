@@ -41,7 +41,6 @@ export class StatisticsComponent implements OnInit {
     this.gameService.getPlayerStatsByGameId(this.gameId).subscribe({
       next: (stats) => {
         this.playerStats = stats.sort((a, b) => a.playerFirstname.localeCompare(b.playerFirstname));
-        console.log('Player Stats Loaded:', this.playerStats);
       },
       error: () => {
         console.error('Errore nel caricamento delle statistiche');
