@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PlayerStat } from '../model/player-stat.model';
 import { GameService } from '../service/game/game.service';
@@ -41,6 +41,7 @@ export class StatisticsComponent implements OnInit {
     this.gameService.getPlayerStatsByGameId(this.gameId).subscribe({
       next: (stats) => {
         this.playerStats = stats.sort((a, b) => a.playerFirstname.localeCompare(b.playerFirstname));
+        console.log('Player Stats Loaded:', this.playerStats);
       },
       error: () => {
         console.error('Errore nel caricamento delle statistiche');
@@ -98,16 +99,137 @@ export class StatisticsComponent implements OnInit {
     });
   }
 
-  addRebound(playerStatId: number|undefined, rebound : number): void {
-    this.gameService.addRebound(playerStatId!, rebound).subscribe({
+  addORebound(playerStatId: number|undefined, oRebound : number): void {
+    this.gameService.addORebound(playerStatId!, oRebound).subscribe({
+      next: () => {
+        console.log(`Rimbalzo offensivo aggiunto per il giocatore con ID ${playerStatId}: +${oRebound}`);
+        this.loadPlayerStats();
+      },
+      error: () => {
+        console.error('Errore nell\'aggiunta del rimbalzo offensivo');
+      }
+    });
+  }
+
+  addDRebound(playerStatId: number|undefined, dRebound : number): void {
+    this.gameService.addDRebound(playerStatId!, dRebound).subscribe({
       next: () => {
         this.loadPlayerStats();
       },
       error: () => {
-        console.error('Errore nell\'aggiunta del rimbalzo');
+        console.error('Errore nell\'aggiunta del rimbalzo difensivo');
       }
     });
   }
+
+  addSteal(playerStatId: number|undefined, steal : number): void {
+    this.gameService.addSteal(playerStatId!, steal).subscribe({
+      next: () => {
+        this.loadPlayerStats();
+      },
+      error: () => {
+        console.error('Errore nell\'aggiunta della palla recuperata');
+      }
+    });
+  }
+
+  addTurnover(playerStatId: number|undefined, turnover : number): void {
+    this.gameService.addTurnover(playerStatId!, turnover).subscribe({
+      next: () => {
+        this.loadPlayerStats();
+      },
+      error: () => {
+        console.error('Errore nell\'aggiunta della palla persa');
+      }
+    });
+  }
+
+  addBlock(playerStatId: number|undefined, block : number): void {
+    this.gameService.addBlock(playerStatId!, block).subscribe({
+      next: () => {
+        this.loadPlayerStats();
+      },
+      error: () => {
+        console.error('Errore nell\'aggiunta della stoppata');
+      }
+    });
+  }
+
+  addTwoPointsMade(playerStatId: number|undefined, made2 : number): void {
+    this.gameService.addTwoPointsMade(playerStatId!, made2).subscribe({
+      next: () => {
+        this.loadPlayerStats();
+      },
+      error: () => {
+        console.error('Errore nell\'aggiunta del tiro da due segnato');
+      }
+    });
+  }
+
+  addTwoPointsAttempted(playerStatId: number|undefined, attempt2 : number): void {
+    this.gameService.addTwoPointsAttempted(playerStatId!, attempt2).subscribe({
+      next: () => {
+        this.loadPlayerStats();
+      },
+      error: () => {
+        console.error('Errore nell\'aggiunta del tiro da due provato');
+      }
+    });
+  }
+
+  addThreePointsMade(playerStatId: number|undefined, made3 : number): void {
+    this.gameService.addThreePointsMade(playerStatId!, made3).subscribe({
+      next: () => {
+        this.loadPlayerStats();
+      },
+      error: () => {
+        console.error('Errore nell\'aggiunta del tiro da tre segnato');
+      }
+    });
+  }
+
+  addThreePointsAttempted(playerStatId: number|undefined, attempt3 : number): void {
+    this.gameService.addThreePointsAttempted(playerStatId!, attempt3).subscribe({
+      next: () => {
+        this.loadPlayerStats();
+      },
+      error: () => {
+        console.error('Errore nell\'aggiunta del tiro da tre provato');
+      }
+    });
+  }
+
+  addFreeThrowMade(playerStatId: number|undefined, made1 : number): void {
+    this.gameService.addFreeThrowMade(playerStatId!, made1).subscribe({
+      next: () => {
+        this.loadPlayerStats();
+      },
+      error: () => {
+        console.error('Errore nell\'aggiunta del tiro libero segnato');
+      }
+    });
+  }
+
+  addFreeThrowAttempted(playerStatId: number|undefined, attempt1 : number): void {
+    this.gameService.addFreeThrowAttempted(playerStatId!, attempt1).subscribe({
+      next: () => {
+        this.loadPlayerStats();
+      },
+      error: () => {
+        console.error('Errore nell\'aggiunta del tiro libero provato');
+      }
+    });
+  }
+
+
+
+
+
+
+
+
+
+
 
 
 

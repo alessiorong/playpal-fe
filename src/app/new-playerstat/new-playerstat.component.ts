@@ -44,13 +44,31 @@ export class NewPlayerstatComponent implements OnInit {
   }
 
   onSubmit(ngForm : NgForm){
-    const newStat : PlayerStat = {
+    /*const newStat : PlayerStat = {
       playerFirstname: this.selectedPlayerFirstname,
       playerLastname: this.selectedPlayerLastname,
       points: this.points,
-      rebound: this.rebound,
       assist: this.assist,
+      oRebound: this.
       playerId: this.selectedPlayerId
+    }*/
+    const newStat : PlayerStat = {
+      playerFirstname: this.selectedPlayerFirstname,
+      playerLastname: this.selectedPlayerLastname,
+      points: 0,
+      oRebound: 0,
+      dRebound: 0,
+      assist: 0,
+      turnover: 0,
+      steal: 0,
+      block: 0,
+      freeThrowMade: 0,
+      freeThrowAttempted: 0,
+      twoPointsMade: 0,
+      twoPointsAttempted: 0,
+      threePointsMade: 0,
+      threePointsAttempted: 0,
+      playerId: 0
     }
 
     this.playerService.createPlayerStatByPlayerId(newStat.playerId).subscribe({

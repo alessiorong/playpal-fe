@@ -48,12 +48,57 @@ export class PlayerService {
     return this.http.get(`${this.apiUrl}/${playerId}/average-points`);
   }
 
-  averageRebounds(playerId:number) : Observable<any> {
-    return this.http.get(`${this.apiUrl}/${playerId}/average-rebound`);
+  averageORebounds(playerId:number) : Observable<any> {
+    return this.http.get(`${this.apiUrl}/${playerId}/average-offensive-rebound`);
   }
+
+  averageDRebounds(playerId:number) : Observable<any> {
+    return this.http.get(`${this.apiUrl}/${playerId}/average-difensive-rebound`);
+  }
+
 
   averageAssist(playerId:number) : Observable<any> {
     return this.http.get(`${this.apiUrl}/${playerId}/average-assist`);
   }
+
+  averageSteals(playerId:number) : Observable<any> {
+    return this.http.get(`${this.apiUrl}/${playerId}/average-steals`);
+  }
+
+  averageTurnovers(playerId:number) : Observable<any> {
+    return this.http.get(`${this.apiUrl}/${playerId}/average-turnovers`);
+  }
+
+  averageBlocks(playerId:number) : Observable<any> {
+    return this.http.get(`${this.apiUrl}/${playerId}/average-blocks`);
+  }
+
+  averageFTM(playerId:number) : Observable<any> {
+    return this.http.get(`${this.apiUrl}/${playerId}/average-free-throw-made`);
+  }
+
+  averageFTA(playerId:number) : Observable<any> {
+    return this.http.get(`${this.apiUrl}/${playerId}/average-free-throw-attempted`);
+  }
+
+  averageTwoPM(playerId:number) : Observable<any> {
+    return this.http.get(`${this.apiUrl}/${playerId}/average-two-points-made`);
+  }
+
+  averageTwoPA(playerId:number) : Observable<any> {
+    return this.http.get(`${this.apiUrl}/${playerId}/average-two-points-attempted`);
+  }
+
+  averageThreePM(playerId:number) : Observable<any> {
+    return this.http.get(`${this.apiUrl}/${playerId}/average-three-points-made`);
+  }
+
+  averageThreePA(playerId:number) : Observable<any> {
+    return this.http.get(`${this.apiUrl}/${playerId}/average-three-points-attempted`);
+  }
+
+
+
+
 
 }

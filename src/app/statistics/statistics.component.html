@@ -9,7 +9,17 @@
             <th>Cognome</th>
             <th>Punti</th>
             <th>Assist</th>
-            <th>Rimbalzi</th>
+            <th>Rim Off</th>
+            <th>Rim Dif</th>
+            <th>Steal</th>
+            <th>Turnover</th>
+            <th>Block</th>
+            <th>2PM</th>
+            <th>2PA</th>
+            <th>3PM</th>
+            <th>3PA</th>
+            <th>FTM</th>
+            <th>FTA</th>
             <th></th>
           </tr>
         </thead>
@@ -20,14 +30,33 @@
                    <td>{{p.playerLastname}}</td> 
                     <td>{{p.points }}</td>
                     <td>{{p.assist }}</td>
-                    <td>{{p.rebound}}</td>
+                    <td>{{p.oRebound}}</td>
+                    <td>{{p.dRebound}}</td>
+                    <td>{{p.steal}}</td>
+                    <td>{{p.turnover}}</td>
+                    <td>{{p.block}}</td>
+                    <td>{{p.twoPointsMade}}</td>
+                    <td>{{p.twoPointsAttempted}}</td>
+                    <td>{{p.threePointsMade}}</td>
+                    <td>{{p.threePointsAttempted}}</td>
+                    <td>{{p.freeThrowMade}}</td>
+                    <td>{{p.freeThrowAttempted}}</td>
                     
                     <td>
                         <button (click)="addPoints(p.id, 1)" class="btn btn-primary btn-sm">+1 Punto</button>
                         <button (click)="addPoints(p.id, 2)" class="btn btn-primary btn-sm">+2 Punti</button>
                         <button (click)="addPoints(p.id, 3)" class="btn btn-primary btn-sm">+3 Punti</button>
                         <button (click)="addAssist(p.id, 1)" class="btn btn-secondary btn-sm">+1 Assist</button>
-                        <button (click)="addRebound(p.id, 1)" class="btn btn-secondary btn-sm">+1 Rimbalzo</button>
+                        <button (click)="addDRebound(p.id, 1)" class="btn btn-secondary btn-sm">+1 Dif Rim</button>
+                        <button (click)="addORebound(p.id, 1)" class="btn btn-secondary btn-sm">+1 Off Rim</button>
+                        <button (click)="addSteal(p.id, 1)" class="btn btn-secondary btn-sm">+1 Steal</button>
+                        <button (click)="addTurnover(p.id, 1)" class="btn btn-secondary btn-sm">+1 turnover</button>
+                        <button (click)="addBlock(p.id, 1)" class="btn btn-secondary btn-sm">+1 Block</button>
+                        <button (click)="addTwoPointsAttempted(p.id, 1)" class="btn btn-secondary btn-sm">+1 Tiro da 2 Sbagliato</button>
+                        <button (click)="addThreePointsAttempted(p.id, 1)" class="btn btn-secondary btn-sm">+1 Tiro da 3 Sbagliato</button>
+                        <button (click)="addFreeThrowAttempted(p.id, 1)" class="btn btn-secondary btn-sm">+1 Tiro Libero Sbagliato</button>
+                        
+                        
                     </td>
                 </tr>
             }

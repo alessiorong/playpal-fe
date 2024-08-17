@@ -3,10 +3,23 @@
 
     @if (averageStats) {
         <div>
-            <p>Media Punti: {{ averageStats.averagePoints }}</p>
-            <p>Media Assist: {{ averageStats.averageAssist }}</p>
-            <p>Media Rimbalzi: {{ averageStats.averageRebound }}</p>
-        </div>
+            <p>Punti: {{ averageStats.averagePoints }}</p>
+            <p>Assist: {{ averageStats.averageAssist }}</p>
+            <p>Rimbalzi Difensivi: {{ averageStats.averageDRebound }}</p>
+            <p>Rimbalzi Offensivi: {{averageStats.averageORebound}}</p>
+            <p>Palle Recuperate: {{averageStats.averageSteals}}</p>
+            <p>Stoppate: {{averageStats.averageBlocks}}</p>
+            <p>Palle Perse: {{averageStats.averageTurnovers}}</p>
+            <p>Tiri Da Due Segnati: {{averageStats.average2PM}} </p>
+            <p>Tiri Da Due Tentati: {{averageStats.average2PA}}</p>
+            <p>Percentuale Tiri Da Due: {{ averageStats.average2PA > 0 ? (averageStats.average2PM / averageStats.average2PA * 100).toFixed(2) : 'N/A' }}%</p>
+            <p>Tiri Da Tre Segnati: {{averageStats.average3PM}}</p>
+            <p>Tiri Da Tre Tentati: {{averageStats.average3PA}}</p>
+            <p>Percentuale Tiri Da Tre: {{ averageStats.average3PA > 0 ? (averageStats.average3PM / averageStats.average3PA * 100).toFixed(2) : 'N/A' }}%</p>
+            <p>Tiri Liberi Segnati: {{averageStats.averageFTM}}</p>
+            <p>Tiri Liberi Tentati: {{averageStats.averageFTA}}</p>
+            <p>Percentuale Tiri Liberi: {{ averageStats.averageFTA > 0 ? (averageStats.averageFTM / averageStats.averageFTA * 100).toFixed(2) : 'N/A' }}%</p>
+            </div>
     } 
 
     <div>
