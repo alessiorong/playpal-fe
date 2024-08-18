@@ -24,9 +24,14 @@ export class PlayerService {
     return this.http.post<Player>(`${this.apiUrl}/new`, player);
   }
 
-  addPlayerToTeam(playerId : number, teamId : number): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${playerId}/add-in-team/${teamId}`, {});
+  addPlayerToTeam(playerId : number, teamId : number, jerseyNumber : number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/${playerId}/add-in-team/${teamId}`, {jerseyNumber});
   }
+
+  getAvailableJerseyNumbers(teamId: number): Observable<number[]> {
+    return this.http.get<number[]>(`${this.apiUrl}/team/${teamId}/available-jersey-numbers`);
+  }
+  
 
   deletePlayerById(id : number) : Observable<any> {
     return this.http.delete(`${this.apiUrl}/remove/${id}`);

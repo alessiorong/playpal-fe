@@ -1,9 +1,17 @@
 <div id="alertContainer">
     <div class="alert alert-success" role="alert">
-        <h4 class="alert-heading">Sei sicuro di voler aggiugere questo giocatore alla squadra?</h4>
-        <div id="btn">
-          <button id="aggiungi" class="btn btn-danger btn-lg" (click)="addPlayer()">Aggiungi</button>
-         <!-- <button class="btn btn-secondary btn-lg" routerLink="/">Annulla</button> -->
-        </div>
+      <h4 class="alert-heading">Sei sicuro di voler aggiungere questo giocatore alla squadra?</h4>
+      <div>
+        <label for="jerseyNumberSelect">Scegli il numero di maglia:</label>
+        <select id="jerseyNumberSelect" [(ngModel)]="selectedJerseyNumber" class="form-control">
+          @for (number of availableJerseyNumbers; track number) {
+            <option [value]="number">{{ number }}</option>
+          }    
+        </select>
+      </div>
+      <div id="btn">
+        <button id="aggiungi" class="btn btn-danger btn-lg" (click)="addPlayer()">Aggiungi</button>
+        <button class="btn btn-secondary btn-lg" (click)="goBack()">Annulla</button>
     </div>
-</div>
+  </div>
+  
