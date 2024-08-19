@@ -1,7 +1,7 @@
 <div id="gamelist"><h3>Playerlist</h3></div>
 
 <div class="gamelistContainer">
-    <table class="table table-striped m-4">
+    <table class="table table-bordered m-4">
         <thead>
             <tr id="intestation">
                 <th>Game Day</th>
@@ -20,11 +20,15 @@
                     <td>{{g.myFinalScore}}</td>
                     <td>{{g.oppositeFinalScore}}</td>
                     <td>{{g.result}}</td>
-                    <td><button type="button" class="btn btn-outline-danger" [routerLink] = "['/statistics', g.id]">vedi stats</button></td> 
-                    <td><button type="button" class="btn btn-outline-danger" [routerLink] = "['/delete-game', teamId, g.id]">elimina</button></td>
-                    <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/change-result', g.id]">Cambia Risultato</button></td>
-                    <td><button type="button" class="btn btn-outline-secondary" [routerLink]="['/team', teamId, 'game', g.id, 'change-scores']">Cambia Punteggi</button></td> 
-                </tr>
+                    <td>
+                        <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-danger" [routerLink] = "['/statistics', g.id]">vedi stats</button>
+                        <button type="button" class="btn btn-outline-danger" [routerLink] = "['/delete-game', teamId, g.id]">elimina</button>
+                        <button type="button" class="btn btn-outline-primary" [routerLink]="['/change-result', g.id]">Cambia Risultato</button>
+                        <button type="button" class="btn btn-outline-secondary" [routerLink]="['/team', teamId, 'game', g.id, 'change-scores']">Cambia Punteggi</button>
+                        </div>
+                    </td>    
+                    </tr>
             }
         </tbody>
     </table>
