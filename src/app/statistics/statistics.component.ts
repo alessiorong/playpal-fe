@@ -18,6 +18,7 @@ export class StatisticsComponent implements OnInit {
 
   playerStats : PlayerStat[] = [];
   players : Player[] = [];
+  oppositeTeamName: string = '';
   gameId!: number;
   teamId!: number;
   selectedPlayerId!: number;
@@ -34,6 +35,18 @@ export class StatisticsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.gameId = +params['gameId'];
       this.loadPlayerStats();
+      this.loadGameDetails();
+    });
+  }
+
+  loadGameDetails(): void {
+    this.gameService.getGameById(this.gameId).subscribe({
+      next: (game) => {
+        this.oppositeTeamName = game.oppositeTeam; // Imposta il nome della squadra avversaria
+      },
+      error: () => {
+        console.error('Errore nel caricamento dei dettagli della partita');
+      }
     });
   }
 
