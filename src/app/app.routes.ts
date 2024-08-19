@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { ChangeResultComponent } from './change-result/change-result.component';
 import { ChangeCategoryComponent } from './change-category/change-category.component';
 import { AverageStatsComponent } from './average-stats/average-stats.component';
+import { ChangeScoresComponent } from './change-scores/change-scores.component';
 
 export const routes: Routes = [
     {path:'', component: HomeComponent},
@@ -29,6 +30,7 @@ export const routes: Routes = [
     {path: 'team/:id/delete-team', component: DeleteTeamComponent},
     {path: 'playerlist/:teamId', component: PlayerlistComponent},
     {path: 'free-players/:teamId', component: FreePlayersComponent},
+    {path: 'free-players', component: FreePlayersComponent},
     {path: 'add-player/:playerId/to-team/:teamId', component: AddPlayerComponent},
     {path: 'remove-player/:playerId/:teamId', component: RemovePlayerComponent},
     {path: 'gamelist/:teamId', component: GameListComponent},
@@ -39,6 +41,9 @@ export const routes: Routes = [
     {path: 'change-result/:gameId', component: ChangeResultComponent},
     {path: 'change-category/:teamId', component: ChangeCategoryComponent},
     {path: 'average-stats/:teamId/:playerId', component: AverageStatsComponent},
+    {path: 'team/:teamId/game/:gameId/change-scores', component: ChangeScoresComponent }
+
+
 
     
 

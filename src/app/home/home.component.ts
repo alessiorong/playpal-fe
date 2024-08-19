@@ -53,6 +53,10 @@ export class HomeComponent implements OnInit {
     this.ruoter.navigate(['/new-team']);
   }
 
+  onFreePlayersList(): void {
+    this.ruoter.navigate(['free-players']);
+  }
+
 
 
 

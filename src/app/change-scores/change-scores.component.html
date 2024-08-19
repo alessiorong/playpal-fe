@@ -1,0 +1,19 @@
+<div class="container">
+    <h3>Aggiorna i Punteggi Finali</h3>
+    <form #scoreForm="ngForm" (ngSubmit)="updateScores(scoreForm)">
+      <div class="form-group">
+        <label for="myFinalScore">Il Tuo Punteggio Finale:</label>
+        <input type="number" id="myFinalScore" name="myFinalScore" [(ngModel)]="myFinalScore" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="oppositeFinalScore">Punteggio Finale Avversario:</label>
+        <input type="number" id="oppositeFinalScore" name="oppositeFinalScore" [(ngModel)]="oppositeFinalScore" class="form-control" required>
+      </div>
+  
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="scoreForm.invalid">Aggiorna Punteggi</button>
+      <button class="btn btn-secondary mt-3" [routerLink]="['/gamelist', this.gameId]">Annulla</button>
+    </form>
+  
+  </div>
+  

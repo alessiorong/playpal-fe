@@ -6,6 +6,8 @@
             <tr id="intestation">
                 <th>Game Day</th>
                 <th>Avvesario</th>
+                <th>Casa</th>
+                <th>Trasferta</th>
                 <th>Risultato</th>
                 <th></th>
             </tr>
@@ -15,10 +17,13 @@
                 <tr>
                     <td>{{g.gameDay}}</td>
                     <td>{{g.oppositeTeam}}</td>
+                    <td>{{g.myFinalScore}}</td>
+                    <td>{{g.oppositeFinalScore}}</td>
                     <td>{{g.result}}</td>
                     <td><button type="button" class="btn btn-outline-danger" [routerLink] = "['/statistics', g.id]">vedi stats</button></td> 
                     <td><button type="button" class="btn btn-outline-danger" [routerLink] = "['/delete-game', teamId, g.id]">elimina</button></td>
                     <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/change-result', g.id]">Cambia Risultato</button></td>
+                    <td><button type="button" class="btn btn-outline-secondary" [routerLink]="['/team', teamId, 'game', g.id, 'change-scores']">Cambia Punteggi</button></td> 
                 </tr>
             }
         </tbody>

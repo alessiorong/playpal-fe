@@ -30,9 +30,11 @@ export class AddGameComponent implements OnInit{
   onSubmit(ngForm : NgForm){
     
     const currentGame : Game = {
-      gameDay : ngForm.value.gameDay,
-      oppositeTeam : ngForm.value.oppositeTeam,
-      result : 'da giocare'
+      gameDay: ngForm.value.gameDay,
+      oppositeTeam: ngForm.value.oppositeTeam,
+      result: 'da giocare',
+      myFinalScore: 0,
+      oppositeFinalScore: 0
     };
     
     this.gameService.createGameByTeamId(this.teamId, currentGame).subscribe({

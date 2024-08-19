@@ -110,7 +110,14 @@ export class GameService {
     return this.http.put(`${this.apiUrl}/${gameId}/change-result`, {result});
   }
 
-
+  updateMyFinalScore(gameId: number, newScore: number): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${gameId}/change-my-final-score`, { newScore });
+  }
+  
+  updateOppositeFinalScore(gameId: number, newScore: number): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${gameId}/change-opposite-final-score`, { newScore });
+  }
+  
 
   }
 
