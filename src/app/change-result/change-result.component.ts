@@ -37,7 +37,7 @@ export class ChangeResultComponent implements OnInit {
     this.gameService.updateGameResult(this.gameId, this.selectedResult).subscribe({
       next: () => {
         this.isSubmitted = true;
-        this.router.navigate(['/gamelist', this.teamId]);
+        this.router.navigate(['/gamelist', this.gameId, this.teamId]);
       },
       error: () => {
         alert('Errore durante l\'aggiornamento del risultato');

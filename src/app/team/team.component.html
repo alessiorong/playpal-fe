@@ -8,10 +8,10 @@
             </tbody>
         </table>  
     </div>
-    <button class="btn btn-danger" routerLink="delete-team">Elimina</button>
-    <button id="mostra" [routerLink]="['/gamelist', team?.id]">Mostra la lista delle partite</button>
-    <button id="mostra" [routerLink]="['/playerlist', team?.id]">Mostra rosa giocatori</button>
-    <button id="modifica" [routerLink]="['/change-category', team?.id]">Modifica Categoria</button>
-    <button class="btn btn-secondary mt-3" [routerLink]="'/'">Torna alla Home</button>
+    <button id="elimina" class="btn btn-danger mt-3" routerLink="delete-team">Elimina</button>
+    <button id="mostra" class="btn btn-basket mt-3" [routerLink]="['/gamelist',gameId, team?.id]">Mostra la lista delle partite</button>
+    <button id="mostra" class="btn btn-basket mt-3" [routerLink]="['/playerlist', team?.id]">Mostra rosa giocatori</button>
+    <button id="modifica" class="btn btn-basket mt-3" [routerLink]="['/change-category', team?.id]">Modifica Categoria</button>
+    <button id="indietro" class="btn btn-secondary mt-3" [routerLink]="'/'">Torna alla Home</button>
 </div>
 

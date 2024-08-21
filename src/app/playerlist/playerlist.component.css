@@ -1,0 +1,15 @@
+.btn-basket {
+    background-color: #FF8C00; /* Arancione basket */
+    color: white;
+    border: 1px solid #8B4513; /* Marrone per richiamare i dettagli del campo */
+}
+
+.btn-basket:hover {
+    background-color: #FFA500; /* Un arancione leggermente più chiaro al passaggio del mouse */
+    color: white;
+}
+
+.btn-basket:active {
+    background-color: #FF4500; /* Colore più scuro quando il pulsante è cliccato */
+    color: white;
+}

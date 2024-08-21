@@ -12,7 +12,6 @@ import { RemovePlayerComponent } from './remove-player/remove-player.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { AddGameComponent } from './add-game/add-game.component';
 import { DeleteGameComponent } from './delete-game/delete-game.component';
-import { NewPlayerstatComponent } from './new-playerstat/new-playerstat.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { HomeComponent } from './home/home.component';
 import { ChangeResultComponent } from './change-result/change-result.component';
@@ -33,10 +32,9 @@ export const routes: Routes = [
     {path: 'free-players', component: FreePlayersComponent},
     {path: 'add-player/:playerId/to-team/:teamId', component: AddPlayerComponent},
     {path: 'remove-player/:playerId/:teamId', component: RemovePlayerComponent},
-    {path: 'gamelist/:teamId', component: GameListComponent},
+    {path: 'gamelist/:gameId/:teamId', component: GameListComponent},
     {path: 'add-game/:teamId', component: AddGameComponent},
     {path: 'delete-game/:teamId/:gameId', component: DeleteGameComponent},
-    {path: 'add-playerstat/:gameId/:playerId', component: NewPlayerstatComponent},
     {path: 'statistics/:gameId/:teamId', component: StatisticsComponent},
     {path: 'change-result/:gameId', component: ChangeResultComponent},
     {path: 'change-category/:teamId', component: ChangeCategoryComponent},

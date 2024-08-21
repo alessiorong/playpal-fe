@@ -40,7 +40,7 @@ export class AddGameComponent implements OnInit{
     this.gameService.createGameByTeamId(this.teamId, currentGame).subscribe({
       next: () => {
         this.isSubmitted = true;
-        this.router.navigate([`gamelist/${this.teamId}`]);
+        this.router.navigate([`gamelist/${currentGame.id}/${this.teamId}`]);
       },
       error: () => {
         console.error('Errore nell\' aggiunta di questo game');

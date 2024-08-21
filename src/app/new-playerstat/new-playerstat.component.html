@@ -1,8 +1,0 @@
-<h2>Aggiungi Statistica del Giocatore alla Partita</h2>
-<form #playerstatform="ngForm" (ngSubmit)="onSubmit(playerstatform)">
-  <div>
-    <label for="statDetail">Dettagli Statistica:</label>
-    <!--<input type="text" id="statDetail" name="statDetail" ngModel required>-->
-  </div>
-  <button type="submit" [disabled]="playerstatform.invalid || isSubmitted">Aggiungi Statistica</button>
-</form>

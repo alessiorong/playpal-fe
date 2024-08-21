@@ -40,7 +40,7 @@ export class ChangeScoresComponent implements OnInit {
           this.gameService.updateOppositeFinalScore(this.gameId, oppositeFinalScore).subscribe({
             next: () => {
               this.isSubmitted = true;
-              this.router.navigate([`/gamelist/${this.teamId}`]);
+              this.router.navigate([`/gamelist/${this.gameId}/${this.teamId}`]);
             },
             error: () => {
               console.error('Errore durante aggiornamento dello score dell\'avversario');

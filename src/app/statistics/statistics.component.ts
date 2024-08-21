@@ -82,13 +82,54 @@ export class StatisticsComponent implements OnInit {
     });
   } 
 
-  addPlayerStat() : void {
-    if(this.selectedPlayerId){
-      this.router.navigate([`/add-playerstat/${this.gameId}/${this.selectedPlayerId}`]);
+  addPlayerStat(): void {
+    if (this.selectedPlayerId) {
+      this.playerService.getPlayerById(this.selectedPlayerId).subscribe({
+        next: (player) => {
+          const newStat: PlayerStat = {
+            playerFirstname: player.firstname,
+            playerLastname: player.lastname,
+            points: 0,
+            oRebound: 0,
+            dRebound: 0,
+            assist: 0,
+            turnover: 0,
+            steal: 0,
+            block: 0,
+            freeThrowMade: 0,
+            freeThrowAttempted: 0,
+            twoPointsMade: 0,
+            twoPointsAttempted: 0,
+            threePointsMade: 0,
+            threePointsAttempted: 0,
+            playerId: this.selectedPlayerId
+          };
+  
+          this.playerService.createPlayerStatByPlayerId(newStat.playerId).subscribe({
+            next: (response) => {
+              this.gameService.addPlayerStatToGameByGameId(response.id, this.gameId).subscribe({
+                next: () => {
+                  this.loadPlayerStats();
+                },
+                error: () => {
+                  alert('Errore nell\'aggiunta della statistica alla partita');
+                }
+              });
+            },
+            error: () => {
+              alert('Errore nella creazione della statistica del giocatore');
+            }
+          });
+        },
+        error: () => {
+          console.error('Errore nel recupero del giocatore');
+        }
+      });
     } else {
       console.error('Seleziona un giocatore prima di aggiungere una statistica');
     }
   }
+  
 
   removePlayerStat(playerStatId: number): void {
     this.gameService.removePlayerStatToGameByGameId(this.gameId, playerStatId).subscribe({
@@ -249,7 +290,7 @@ export class StatisticsComponent implements OnInit {
 
 
   goBack(): void {
-    this.router.navigate(['/gamelist', this.teamId]);
+    this.router.navigate(['/gamelist',this.gameId, this.teamId]);
 }
 
 

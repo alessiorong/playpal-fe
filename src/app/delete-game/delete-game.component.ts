@@ -30,7 +30,7 @@ export class DeleteGameComponent implements OnInit {
 
   onDelete(): void{
     this.gameService.deleteGameById(this.gameId).subscribe({
-      next: () => { this.router.navigate([`gamelist/${this.teamId}`])
+      next: () => { this.router.navigate([`gamelist/${this.gameId}/${this.teamId}`]);
       },
       error: (err) => {
         console.error('Errore nella eliminazione della partita')

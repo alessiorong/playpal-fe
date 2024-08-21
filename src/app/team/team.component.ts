@@ -15,6 +15,7 @@ import { TeamService } from '../service/team/team.service';
 export class TeamComponent implements OnInit{
 
   team : Team | undefined;
+  gameId!: number;
   
 
   constructor(private teamService: TeamService, private route : ActivatedRoute, private router : Router){}
@@ -23,6 +24,9 @@ export class TeamComponent implements OnInit{
     if(id){
       this.teamService.getTeamByid(+id).subscribe(t => this.team = t);
     }
+    this.route.params.subscribe(params => {
+      this.gameId = +params['gameId'];
+    })
   }
 
   goBack(): void {
