@@ -41,6 +41,10 @@ export class GameService {
     return this.http.post(`${this.apiUrl}/${gameId}/add-playerstat/${playerStatId}`, {});
   }
 
+  removePlayerStatToGameByGameId(gameId:number, playerStatId:number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${gameId}/remove-playerstat/${playerStatId}`);
+  }
+
   addPoints(statId: number, value: number): Observable<any> {
     const params = new HttpParams().set('value', value.toString());
     return this.http.put(`${this.apiUrl}/playerstat/${statId}/add-points`, null, {params});

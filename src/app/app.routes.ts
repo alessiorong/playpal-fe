@@ -37,7 +37,7 @@ export const routes: Routes = [
     {path: 'add-game/:teamId', component: AddGameComponent},
     {path: 'delete-game/:teamId/:gameId', component: DeleteGameComponent},
     {path: 'add-playerstat/:gameId/:playerId', component: NewPlayerstatComponent},
-    {path: 'statistics/:gameId', component: StatisticsComponent},
+    {path: 'statistics/:gameId/:teamId', component: StatisticsComponent},
     {path: 'change-result/:gameId', component: ChangeResultComponent},
     {path: 'change-category/:teamId', component: ChangeCategoryComponent},
     {path: 'average-stats/:teamId/:playerId', component: AverageStatsComponent},

@@ -55,7 +55,7 @@
                         <button (click)="addTwoPointsAttempted(p.id, 1)" class="btn btn-secondary btn-sm">+1 Tiro da 2 Sbagliato</button>
                         <button (click)="addThreePointsAttempted(p.id, 1)" class="btn btn-secondary btn-sm">+1 Tiro da 3 Sbagliato</button>
                         <button (click)="addFreeThrowAttempted(p.id, 1)" class="btn btn-secondary btn-sm">+1 Tiro Libero Sbagliato</button>
-                        
+                        <button (click)="removePlayerStat(p.id!)" class="btn btn-danger btn-sm">Rimuovi</button>
                         
                     </td>
                 </tr>
@@ -74,6 +74,7 @@
             }
         </select>
         <button id="aggiungi" class="btn btn-primary mt-2" (click)="addPlayerStat()">Aggiungi</button>
+        <button id="indietro" class="btn btn-secondary" (click)="goBack()">Indietro</button>
     </div>
     }
  

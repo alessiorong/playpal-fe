@@ -34,6 +34,7 @@ export class StatisticsComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.gameId = +params['gameId'];
+      this.teamId = +params['teamId'];
       this.loadPlayerStats();
       this.loadGameDetails();
     });
@@ -42,7 +43,7 @@ export class StatisticsComponent implements OnInit {
   loadGameDetails(): void {
     this.gameService.getGameById(this.gameId).subscribe({
       next: (game) => {
-        this.oppositeTeamName = game.oppositeTeam; // Imposta il nome della squadra avversaria
+        this.oppositeTeamName = game.oppositeTeam; 
       },
       error: () => {
         console.error('Errore nel caricamento dei dettagli della partita');
@@ -88,6 +89,19 @@ export class StatisticsComponent implements OnInit {
       console.error('Seleziona un giocatore prima di aggiungere una statistica');
     }
   }
+
+  removePlayerStat(playerStatId: number): void {
+    this.gameService.removePlayerStatToGameByGameId(this.gameId, playerStatId).subscribe({
+        next: () => {
+            console.log('Statistica del giocatore rimossa con successo');
+            this.loadPlayerStats();  
+        },
+        error: (err) => {
+            console.error('Errore durante la rimozione della statistica del giocatore', err);
+        }
+    });
+}
+
 
   addPoints(playerStatId: number|undefined, points: number): void {
     this.gameService.addPoints(playerStatId!, points).subscribe({
@@ -233,6 +247,10 @@ export class StatisticsComponent implements OnInit {
     });
   }
 
+
+  goBack(): void {
+    this.router.navigate(['/gamelist', this.teamId]);
+}
 
 
 
