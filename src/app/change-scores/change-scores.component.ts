@@ -38,7 +38,6 @@ export class ChangeScoresComponent implements OnInit {
 
         let updatedMyScore, updatedOppositeScore;
 
-        // Se la squadra è in trasferta, scambia i valori di myFinalScore e oppositeFinalScore
         if (homeOrAway === 'away') {
             updatedMyScore = oppositeFinalScore;
             updatedOppositeScore = myFinalScore;
@@ -47,12 +46,10 @@ export class ChangeScoresComponent implements OnInit {
             updatedOppositeScore = oppositeFinalScore;
         }
 
-        // Aggiorna lo score nel backend
         this.gameService.updateMyFinalScore(this.gameId, updatedMyScore).subscribe({
             next: () => {
                 this.gameService.updateOppositeFinalScore(this.gameId, updatedOppositeScore).subscribe({
                     next: () => {
-                        // Determina il risultato in base ai punteggi corretti
                         if (homeOrAway === 'home') {
                             this.selectedResult = myFinalScore > oppositeFinalScore ? 'vinta' : 'persa';
                         } else {
