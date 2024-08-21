@@ -4,13 +4,12 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Game } from '../model/game.model';
 import { GameService } from '../service/game/game.service';
 
-
 @Component({
   selector: 'app-game-list',
   standalone: true,
   imports: [FormsModule, RouterModule],
   templateUrl: './game-list.component.html',
-  styleUrl: './game-list.component.css'
+  styleUrls: ['./game-list.component.css']
 })
 export class GameListComponent implements OnInit {
 
@@ -28,18 +27,13 @@ export class GameListComponent implements OnInit {
       this.teamId = +teamIdStr;
       this.gameService.getAllGamesByTeam(this.teamId).subscribe({
         next: (response) => {
-          this.gamelist = response;
+   
+          this.gamelist = response.sort((a:Game, b:Game) => new Date(b.gameDay).getTime() - new Date(a.gameDay).getTime());
         },
         error: (err) => {
           console.error('Errore nel recupero della lista delle partite');
         }
       });
-      
     }
-
-
   }
-
-
-
 }

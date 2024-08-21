@@ -8,21 +8,22 @@ import { GameService } from '../service/game/game.service';
   standalone: true,
   imports: [FormsModule, RouterModule],
   templateUrl: './change-scores.component.html',
-  styleUrl: './change-scores.component.css'
+  styleUrls: ['./change-scores.component.css']
 })
 export class ChangeScoresComponent implements OnInit {
   teamId!: number;
   gameId!: number;
   myFinalScore!: number;
   oppositeFinalScore!: number;
-  isSubmitted = false;
+  selectedResult!: string;
+  homeOrAway!: string; 
+  results = ['vinta', 'persa'];
 
   constructor(
-    private gameService : GameService,
-    private router : Router,
-    private route : ActivatedRoute
-  ){}
-
+    private gameService: GameService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -31,27 +32,56 @@ export class ChangeScoresComponent implements OnInit {
     });
   }
 
-  updateScores(ngForm:NgForm): void {
-    if(ngForm.valid){
-      const {myFinalScore, oppositeFinalScore} = ngForm.value;
+  updateScores(ngForm: NgForm): void {
+    if (ngForm.valid) {
+        const { myFinalScore, oppositeFinalScore, homeOrAway } = ngForm.value;
 
-      this.gameService.updateMyFinalScore(this.gameId, myFinalScore).subscribe({
-        next: () => {
-          this.gameService.updateOppositeFinalScore(this.gameId, oppositeFinalScore).subscribe({
+        let updatedMyScore, updatedOppositeScore;
+
+        // Se la squadra è in trasferta, scambia i valori di myFinalScore e oppositeFinalScore
+        if (homeOrAway === 'away') {
+            updatedMyScore = oppositeFinalScore;
+            updatedOppositeScore = myFinalScore;
+        } else {
+            updatedMyScore = myFinalScore;
+            updatedOppositeScore = oppositeFinalScore;
+        }
+
+        // Aggiorna lo score nel backend
+        this.gameService.updateMyFinalScore(this.gameId, updatedMyScore).subscribe({
             next: () => {
-              this.isSubmitted = true;
-              this.router.navigate([`/gamelist/${this.gameId}/${this.teamId}`]);
+                this.gameService.updateOppositeFinalScore(this.gameId, updatedOppositeScore).subscribe({
+                    next: () => {
+                        // Determina il risultato in base ai punteggi corretti
+                        if (homeOrAway === 'home') {
+                            this.selectedResult = myFinalScore > oppositeFinalScore ? 'vinta' : 'persa';
+                        } else {
+                            this.selectedResult = myFinalScore > oppositeFinalScore ? 'vinta' : 'persa';
+                        }
+
+                        this.gameService.updateGameResult(this.gameId, this.selectedResult).subscribe({
+                            next: () => {
+                                this.router.navigate([`/gamelist/${this.gameId}/${this.teamId}`]);
+                            },
+                            error: () => {
+                                console.error('Errore durante l\'aggiornamento del risultato');
+                            }
+                        });
+                    },
+                    error: () => {
+                        console.error('Errore durante aggiornamento dello score dell\'avversario');
+                    }
+                });
             },
             error: () => {
-              console.error('Errore durante aggiornamento dello score dell\'avversario');
+                console.error('Errore durante aggiornamento del mio score');
             }
         });
-      },
-      error: () => {
-        console.error('Errore durante aggiornamento my score');
-      }
-      });
     }
-  }
+}
+
+
+
+
 
 }

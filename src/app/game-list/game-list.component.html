@@ -22,10 +22,9 @@
                     <td>{{g.result}}</td>
                     <td>
                         <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-outline-danger" [routerLink] = "['/statistics', g.id, teamId]">vedi stats</button>
-                        <button type="button" class="btn btn-outline-danger" [routerLink] = "['/delete-game', teamId, g.id]">elimina</button>
-                        <button type="button" class="btn btn-outline-primary" [routerLink]="['/change-result', g.id]">Cambia Risultato</button>
-                        <button type="button" class="btn btn-outline-secondary" [routerLink]="['/team', teamId, 'game', g.id, 'change-scores']">Cambia Punteggi</button>
+                        <button type="button" class="btn btn-success mt-3" [routerLink] = "['/statistics', g.id, teamId]">vedi stats</button>
+                        <button type="button" class="btn btn-outline-secondary mt-3" [routerLink]="['/team', teamId, 'game', g.id, 'change-scores']">Aggiorna Punteggio</button>
+                        <button type="button" class="btn btn-outline-danger mt-3" [routerLink] = "['/delete-game', teamId, g.id]">elimina</button>
                         </div>
                     </td>    
                     </tr>
