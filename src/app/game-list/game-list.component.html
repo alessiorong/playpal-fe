@@ -1,4 +1,4 @@
-<div id="gamelist"><h3>Gamelist</h3></div>
+<div id="gamelist"><h3>Risultati</h3></div>
 
 <div class="gamelistContainer">
     <table class="table table-bordered m-4">
@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody id="tabody">
-            @for (g of gamelist; track g.id){
+            @for (g of filteredGameList; track g.id){
                 <tr>
                     <td>{{g.gameDay}}</td>
                     <td>{{g.oppositeTeam}}</td>
@@ -33,6 +33,14 @@
     </table>
 </div>
 <div>
-<button id="aggiungi" class="btn btn-warning mt-3"[routerLink]="['/add-game', teamId]">AGGIUNGI UNA NUOVA PARTITA</button>
-<button type="button" class="btn btn-secondary mt-3" [routerLink]="['/team', teamId]">Indietro</button>
+    @if (!isFilteredByUpcoming) {
+        <button type="button" class="btn btn-primary mt-3" (click)="filterUpcomingGames()">Mostra partite in calendario</button>
+    }
+
+    @if (isFilteredByUpcoming) {
+        <button id="aggiungi" class="btn btn-warning mt-3"[routerLink]="['/add-game', teamId]">Aggiungi una nuova partita</button>
+        <button type="button" class="btn btn-primary mt-3" (click)="filterByPlayedGames()">Mostra risultati</button>
+    }
+    
+    <button type="button" class="btn btn-secondary mt-3" [routerLink]="['/team', teamId]">Torna ai dettagli della squadra</button>
 </div>
