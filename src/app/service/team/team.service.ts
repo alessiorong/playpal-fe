@@ -40,6 +40,63 @@ export class TeamService {
     return this.http.put(`${this.apiUrl}/${teamId}/change-category`, {category});
   }
 
+  getAveragePoints(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/average-points`);
+  }
+
+  getAverageOffRebounds(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/average-offensive-rebounds`);
+  }
+
+  getAverageAssist(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/average-assist`);
+  }
+
+  getAverageDefRebounds(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/average-defensive-rebounds`);
+  }
+
+  getAverageSteals(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/average-steals`);
+  }
+
+  getAverageTurnovers(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/average-turnovers`);
+  }
+
+  getAverageBlocks(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/average-blocks`);
+  }
+
+  getAverageFTM(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/average-free-throw-made`);
+  }
+
+  getAverageFTA(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/average-free-throw-attempted`);
+  }
+
+  getAverageTwoPM(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/average-two-points-made`);
+  }
+
+  getAverageTwoPA(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/average-two-points-attempted`);
+  }
+
+  getAverageThreePM(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/average-three-points-made`);
+  }
+
+  getAverageThreePA(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/average-three-points-attempted`);
+  }
+
+
+
+
+
+
 
 
 

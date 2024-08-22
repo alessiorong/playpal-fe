@@ -8,6 +8,36 @@
             </tbody>
         </table>  
     </div>
+    <div id="team-stats">
+        <table class="table table-striped-columns table-bordered">
+            <thead>
+                <tr>
+                    <th>Statistiche</th>
+                    <th>Valore</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Punti Medi</td><td>{{averagePoints}}</td></tr>
+                <tr><td>Rimbalzi Offensivi Medi</td><td>{{averageOffRebounds}}</td></tr>
+                <tr><td>Assist Medi</td><td>{{averageAssist}}</td></tr>
+                <tr><td>Rimbalzi Difensivi Medi</td><td>{{averageDefRebounds}}</td></tr>
+                <tr><td>Palle Recuperate Medie</td><td>{{averageSteals}}</td></tr>
+                <tr><td>Palle Perse Medie</td><td>{{averageTurnovers}}</td></tr>
+                <tr><td>Stoppate Medie</td><td>{{averageBlocks}}</td></tr>
+                <tr><td>Tiri Liberi Segnati Medi</td><td>{{averageFTM}}</td></tr>
+                <tr><td>Tiri Liberi Tentati Medi</td><td>{{averageFTA}}</td></tr>
+                <tr><td>Percentuale Tiri Liberi</td><td>{{averageFTA>0? (averageFTM /averageFTA * 100).toFixed(2) : 'N/A' }}%</td></tr>
+                <tr><td>Tiri da 2 Segnati Medi</td><td>{{averageTwoPM}}</td></tr>
+                <tr><td>Tiri da 2 Tentati Medi</td><td>{{averageTwoPA}}</td></tr>
+                <tr><td>Percentuale Tiri da 2</td><td>{{averageTwoPA>0? (averageTwoPM/averageTwoPA*100).toFixed(2) : 'N/A' }}%</td></tr>
+                <tr><td>Tiri da 3 Segnati Medi</td><td>{{averageThreePM}}</td></tr>
+                <tr><td>Tiri da 3 Tentati Medi</td><td>{{averageThreePA}}</td></tr>
+                <tr><td>Percentuale Tiri da 3</td><td>{{averageTwoPA>0? (averageThreePM/averageThreePA*100).toFixed(2) : 'N/A' }}%</td></tr>
+                
+            </tbody>
+        </table>  
+    </div>
+
     <button id="elimina" class="btn btn-danger mt-3" routerLink="delete-team">Elimina</button>
     <button id="mostra" class="btn btn-basket mt-3" [routerLink]="['/gamelist',gameId, team?.id]">Mostra la lista delle partite</button>
     <button id="mostra" class="btn btn-basket mt-3" [routerLink]="['/playerlist', team?.id]">Mostra rosa giocatori</button>
