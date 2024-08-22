@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private teamService : TeamService,
-    private ruoter : Router
+    private router : Router // Corretto il typo qui
   ){}
 
   ngOnInit(): void {
@@ -39,26 +39,21 @@ export class HomeComponent implements OnInit {
 
   onSelectTeam(): void {
     if(this.selectedTeamId){
-      this.ruoter.navigate([`/team/${this.selectedTeamId}`]);
+      this.router.navigate([`/team/${this.selectedTeamId}`]);
     } else {
       console.error('Seleziona un team prima di procedere');
     }
   }
 
   onCreatePlayer() : void {
-    this.ruoter.navigate(['/new-player']);
+    this.router.navigate(['/new-player']);
   }
 
   onCreateTeam(): void {
-    this.ruoter.navigate(['/new-team']);
+    this.router.navigate(['/new-team']);
   }
 
   onFreePlayersList(): void {
-    this.ruoter.navigate(['free-players']);
+    this.router.navigate(['free-players']);
   }
-
-
-
-
-
 }
