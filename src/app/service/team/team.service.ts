@@ -40,6 +40,10 @@ export class TeamService {
     return this.http.put(`${this.apiUrl}/${teamId}/change-category`, {category});
   }
 
+  getTotalGamesPlayed(teamId : number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${teamId}/total-games-played`);
+  }
+
   getAveragePoints(teamId : number): Observable<any> {
     return this.http.get(`${this.apiUrl}/${teamId}/average-points`);
   }

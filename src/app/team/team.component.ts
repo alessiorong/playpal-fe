@@ -29,6 +29,7 @@ export class TeamComponent implements OnInit{
   averageTwoPA!: number;
   averageThreePM!: number;
   averageThreePA!: number;
+  totalGamesPlayed!: number;
 
   constructor(private teamService: TeamService, private route : ActivatedRoute, private router : Router){}
   ngOnInit(): void {
@@ -47,6 +48,7 @@ export class TeamComponent implements OnInit{
   }
 
   loadTeamStatistics(): void {
+    this.teamService.getTotalGamesPlayed(this.teamId).subscribe(data => this.totalGamesPlayed = data);
     this.teamService.getAveragePoints(this.teamId).subscribe(data => this.averagePoints = data);
     this.teamService.getAverageOffRebounds(this.teamId).subscribe(data => this.averageOffRebounds = data);
     this.teamService.getAverageAssist(this.teamId).subscribe(data => this.averageAssist = data);

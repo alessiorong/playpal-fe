@@ -16,6 +16,7 @@ export class AverageStatsComponent implements OnInit {
   playerId!: number;
   teamId!: number;
   averageStats : AverageStats | undefined;
+  gamesPlayed! : number;
 
   constructor(
     private playerService : PlayerService,
@@ -47,7 +48,8 @@ export class AverageStatsComponent implements OnInit {
       ThreePointsMade: this.playerService.averageThreePM(this.playerId),
       ThreePointsAttempted: this.playerService.averageThreePA(this.playerId),
       FreeThrowMade: this.playerService.averageFTM(this.playerId),
-      FreeThrowAttempted: this.playerService.averageFTA(this.playerId) 
+      FreeThrowAttempted: this.playerService.averageFTA(this.playerId),
+      gamesPlayed: this.playerService.getTotalGamesPlayed(this.playerId)
     }).subscribe({
       next: (results) => {
         this.averageStats = {
@@ -65,6 +67,7 @@ export class AverageStatsComponent implements OnInit {
           averageFTM: parseFloat(results.FreeThrowMade.toFixed(2)),
           averageFTA: parseFloat(results.FreeThrowAttempted.toFixed(2))
         };
+        this.gamesPlayed = results.gamesPlayed;
       },
       error: () => {
         console.error('Errore nel caricamento delle statistiche medie');

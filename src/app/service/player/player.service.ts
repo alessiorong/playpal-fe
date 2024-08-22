@@ -49,6 +49,10 @@ export class PlayerService {
     return this.http.post(`${this.apiUrl}/${playerId}/remove-from-team`, {}, {responseType: 'text' });
   }
 
+  getTotalGamesPlayed(playerId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${playerId}/total-games-played`);
+  }
+
   averagePoints(playerId:number) : Observable<any> {
     return this.http.get(`${this.apiUrl}/${playerId}/average-points`);
   }
@@ -60,7 +64,6 @@ export class PlayerService {
   averageDRebounds(playerId:number) : Observable<any> {
     return this.http.get(`${this.apiUrl}/${playerId}/average-difensive-rebound`);
   }
-
 
   averageAssist(playerId:number) : Observable<any> {
     return this.http.get(`${this.apiUrl}/${playerId}/average-assist`);
