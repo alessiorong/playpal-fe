@@ -1,5 +1,17 @@
 <div id="gamelist"><h3>Risultati</h3></div>
 
+<div class="filter-container">
+    <i class="fa fa-filter" (click)="toggleFilterOptions()" aria-hidden="true" style="cursor: pointer;"></i>
+</div>
+
+@if (showFilterOptions) {
+    <div class="filter-options mt-3">
+        <button class="btn btn-primary" (click)="filterHomeGames()">Partite in Casa</button>
+        <button class="btn btn-primary" (click)="filterAwayGames()">Partite in Trasferta</button>
+        <button class="btn btn-secondary" (click)="resetFilters()">Mostra Tutte</button>
+    </div>
+}
+
 <div class="gamelistContainer">
     <table class="table table-bordered m-4">
         <thead>
@@ -41,6 +53,7 @@
         <button id="aggiungi" class="btn btn-warning mt-3"[routerLink]="['/add-game', teamId]">Aggiungi una nuova partita</button>
         <button type="button" class="btn btn-primary mt-3" (click)="filterByPlayedGames()">Mostra risultati</button>
     }
+    
     
     <button type="button" class="btn btn-secondary mt-3" [routerLink]="['/team', teamId]">Torna ai dettagli della squadra</button>
 </div>

@@ -19,6 +19,7 @@ export class GameListComponent implements OnInit {
   filteredGameList: any[] = [];
   teamId! : number;
   isFilteredByUpcoming: boolean = false;
+  showFilterOptions = false;
 
   constructor(
     private gameService : GameService,
@@ -53,7 +54,28 @@ export class GameListComponent implements OnInit {
     .sort((a,b) => new Date(a.gameDay).getTime() - new Date(b.gameDay).getTime());
     this.isFilteredByUpcoming = true;
   }
+
+  filterHomeGames(): void {
+    this.filteredGameList = this.gamelist.filter(game => 
+      (game.result === 'vinta' && game.myFinalScore > game.oppositeFinalScore) ||
+      (game.result === 'persa' && game.myFinalScore < game.oppositeFinalScore)
+    );
+  }
+
+filterAwayGames(): void {
+    this.filteredGameList = this.gamelist.filter(game => 
+      (game.result === 'vinta' && game.myFinalScore < game.oppositeFinalScore) ||
+      (game.result === 'persa' && game.myFinalScore > game.oppositeFinalScore)
+    );
+  }
   
+  toggleFilterOptions(): void {
+    this.showFilterOptions = !this.showFilterOptions;
+  }
+
+  resetFilters(): void {
+    this.filteredGameList = [...this.gamelist];
+  }
 
 
 }

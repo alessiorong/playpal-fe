@@ -1,0 +1,15 @@
+.filter-container {
+    text-align: center;
+    margin-top: -20px; /* Puoi regolare questo valore per posizionare l'icona verticalmente */
+    margin-bottom: 20px; /* Spazio tra l'icona e la tabella */
+}
+
+.filter-container i.fa-filter {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.filter-options {
+    margin-bottom: 20px;
+    text-align: center;
+}
