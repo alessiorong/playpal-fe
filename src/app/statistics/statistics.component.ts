@@ -22,6 +22,7 @@ export class StatisticsComponent implements OnInit {
   gameId!: number;
   teamId!: number;
   selectedPlayerId!: number;
+  statisticsLocked : boolean = false;
 
   constructor(
     private gameService : GameService,
@@ -291,7 +292,11 @@ export class StatisticsComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/gamelist',this.gameId, this.teamId]);
-}
+  }
+
+  lockStatistics() : void {
+    this.statisticsLocked = true;
+  }
 
 
 

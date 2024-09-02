@@ -26,42 +26,54 @@
                     <td>{{p.points}}</td>
                     <td>
                         <span>{{p.twoPointsMade}}/{{p.twoPointsAttempted}}</span>
-                        <button (click)="addPoints(p.id,2)" class="no-border-btn">✅</button>
+                        @if (!statisticsLocked) {
+                            <button (click)="addPoints(p.id,2)" class="no-border-btn">✅</button>
                         <button (click)="addTwoPointsAttempted(p.id,1)" class="no-border-btn">❌</button>
+                        }
+                        
                     </td>
                     <td>
                         <span>{{p.threePointsMade}}/{{p.threePointsAttempted}}</span>
-                        <button (click)="addPoints(p.id,3)" class="no-border-btn">✅</button>
-                        <button (click)="addThreePointsAttempted(p.id,1)" class="no-border-btn">❌</button>
+                        @if (!statisticsLocked) {
+                            <button (click)="addPoints(p.id,3)" class="no-border-btn">✅</button>
+                            <button (click)="addThreePointsAttempted(p.id,1)" class="no-border-btn">❌</button>
+                        }
                     </td>
                     <td>
                         <span>O: {{p.oRebound}} D: {{p.dRebound}}</span>
-                        <button (click)="addORebound(p.id,1)" class="no-border-btn">O✅</button>
-                        <button (click)="addDRebound(p.id,1)" class="no-border-btn">D✅</button>
+                        @if (!statisticsLocked) {
+                            <button (click)="addORebound(p.id,1)" class="no-border-btn">O✅</button>
+                            <button (click)="addDRebound(p.id,1)" class="no-border-btn">D✅</button>
+                        }
                     </td>
                     <td>
                         <span>{{p.assist}}</span>
-                        <button (click)="addAssist(p.id,1)" class="no-border-btn">✅</button>
+                        @if (!statisticsLocked) {
+                            <button (click)="addAssist(p.id,1)" class="no-border-btn">✅</button>
+                        }
                     </td>
                     <td>
                         <span>{{p.freeThrowMade}}/{{p.freeThrowAttempted}}</span>
-                        <button (click)="addPoints(p.id,1)" class="no-border-btn">✅</button>
-                        <button (click)="addFreeThrowAttempted(p.id,1)" class="no-border-btn">❌</button>
+                        @if (!statisticsLocked) {
+                            <button (click)="addPoints(p.id,1)" class="no-border-btn">✅</button>
+                            <button (click)="addFreeThrowAttempted(p.id,1)" class="no-border-btn">❌</button>
+                        }
+                        
                     </td>
                     <td>
                         <span>{{p.block}}</span>
-                        <button (click)="addBlock(p.id,1)" class="no-border-btn">✅</button>
+                        @if (!statisticsLocked) {<button (click)="addBlock(p.id,1)" class="no-border-btn">✅</button>}
                     </td>
                     <td>
                         <span>{{p.steal}}</span>
-                        <button (click)="addSteal(p.id,1)" class="no-border-btn">✅</button>
+                        @if (!statisticsLocked) {<button (click)="addSteal(p.id,1)" class="no-border-btn">✅</button>}
                     </td>
                     <td>
                         <span>{{p.turnover}}</span>
-                        <button (click)="addTurnover(p.id,1)" class="no-border-btn">✅</button>
+                        @if (!statisticsLocked) {<button (click)="addTurnover(p.id,1)" class="no-border-btn">✅</button>}
                     </td>
                     <td>
-                        <button (click)="removePlayerStat(p.id!)" class="btn btn-sm btn-danger">Rimuovi</button>
+                        @if (!statisticsLocked) {<button (click)="removePlayerStat(p.id!)" class="btn btn-sm btn-danger">Rimuovi</button>}
                     </td>
                 </tr>
             }
@@ -69,7 +81,7 @@
     </table>
 </div>
 
-@if (players.length > 0) {
+@if (!statisticsLocked && players.length > 0) {
     <div class="mb-3">
         <label for="playerSelect" class="form-label">Seleziona Giocatore:</label>
         <select id="playerSelect" [(ngModel)]="selectedPlayerId" class="form-select">
@@ -78,6 +90,10 @@
             }
         </select>
         <button id="aggiungi" class="btn btn-primary mt-3" (click)="addPlayerStat()">Aggiungi</button>
-        <button id="indietro" class="btn btn-secondary mt-3" (click)="goBack()">Indietro</button>
+        
     </div>
 }
+
+<button id="lock" class="btn btn-warning mt-3" (click)="lockStatistics()">Partita Finita</button>
+        <button id="indietro" class="btn btn-secondary mt-3" (click)="goBack()">Indietro</button>
+
