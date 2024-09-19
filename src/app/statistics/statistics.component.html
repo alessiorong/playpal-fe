@@ -94,6 +94,6 @@
     </div>
 }
 
-<button id="lock" class="btn btn-warning mt-3" (click)="lockStatistics()">Partita Finita</button>
-        <button id="indietro" class="btn btn-secondary mt-3" (click)="goBack()">Indietro</button>
+<button id="lock" class="btn btn-warning mt-3" (click)="lockStatistics()" [disabled]="statisticsLocked" >Partita Finita</button>
+<button id="indietro" class="btn btn-secondary mt-3" (click)="goBack()">Indietro</button>
 

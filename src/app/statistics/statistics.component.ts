@@ -39,6 +39,10 @@ export class StatisticsComponent implements OnInit {
       this.loadPlayerStats();
       this.loadGameDetails();
     });
+    const locked = localStorage.getItem('statisticsLocked');
+    if (locked === 'true') {
+      this.statisticsLocked = true;
+    }
   }
 
   loadGameDetails(): void {
@@ -296,7 +300,11 @@ export class StatisticsComponent implements OnInit {
 
   lockStatistics() : void {
     this.statisticsLocked = true;
+    localStorage.setItem('statisticsLocked', 'true');
   }
+
+
+  
 
 
 
