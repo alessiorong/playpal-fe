@@ -110,6 +110,71 @@ export class GameService {
     return this.http.put(`${this.apiUrl}/playerstat/${statId}/add-three-points-attempted`, null, {params});
   }
 
+  removePoints(statId:number, value:number): Observable<any>{
+    const params = new HttpParams().set('value', value.toString());
+    return this.http.put(`${this.apiUrl}/playerstat/${statId}/remove-points`, null, {params});
+  }
+
+  removeAssist(statId:number, value:number): Observable<any>{
+    const params = new HttpParams().set('value', value.toString());
+    return this.http.put(`${this.apiUrl}/playerstat/${statId}/remove-assist`, null, {params});
+  }
+
+  removeDRebound(statId:number, value:number): Observable<any>{
+    const params = new HttpParams().set('value', value.toString());
+    return this.http.put(`${this.apiUrl}/playerstat/${statId}/remove-defensive-rebound`, null, {params});
+  }
+
+  removeORebound(statId:number, value:number): Observable<any>{
+    const params = new HttpParams().set('value', value.toString());
+    return this.http.put(`${this.apiUrl}/playerstat/${statId}/remove-offensive-rebound`, null, {params});
+  }
+
+  removeTurnover(statId:number, value:number): Observable<any>{
+    const params = new HttpParams().set('value', value.toString());
+    return this.http.put(`${this.apiUrl}/playerstat/${statId}/remove-turnover`, null, {params});
+  }
+
+  removeSteal(statId:number, value:number): Observable<any>{
+    const params = new HttpParams().set('value', value.toString());
+    return this.http.put(`${this.apiUrl}/playerstat/${statId}/remove-steal`, null, {params});
+  }
+
+  removeBlock(statId:number, value:number): Observable<any>{
+    const params = new HttpParams().set('value', value.toString());
+    return this.http.put(`${this.apiUrl}/playerstat/${statId}/remove-block`, null, {params});
+  }
+
+  removeFTM(statId:number, value:number): Observable<any>{
+    const params = new HttpParams().set('value', value.toString());
+    return this.http.put(`${this.apiUrl}/playerstat/${statId}/remove-free-throw-made`, null, {params});
+  }
+
+  removeFTA(statId:number, value:number): Observable<any>{
+    const params = new HttpParams().set('value', value.toString());
+    return this.http.put(`${this.apiUrl}/playerstat/${statId}/remove-free-throw-attempted`, null, {params});
+  }
+
+  removeTwoPointsMade(statId:number, value:number): Observable<any>{
+    const params = new HttpParams().set('value', value.toString());
+    return this.http.put(`${this.apiUrl}/playerstat/${statId}/remove-two-points-made`, null, {params});
+  }
+
+  removeTwoPointsAttempted(statId:number, value:number): Observable<any>{
+    const params = new HttpParams().set('value', value.toString());
+    return this.http.put(`${this.apiUrl}/playerstat/${statId}/remove-two-points-attempted`, null, {params});
+  }
+
+  removeThreePointsMade(statId:number, value:number): Observable<any>{
+    const params = new HttpParams().set('value', value.toString());
+    return this.http.put(`${this.apiUrl}/playerstat/${statId}/remove-three-points-made`, null, {params});
+  }
+
+  removeThreePointsAttempted(statId:number, value:number): Observable<any>{
+    const params = new HttpParams().set('value', value.toString());
+    return this.http.put(`${this.apiUrl}/playerstat/${statId}/remove-three-points-attempted`, null, {params});
+  }
+
   updateGameResult(gameId: number, result: string): Observable<any> {
     return this.http.put(`${this.apiUrl}/${gameId}/change-result`, {result});
   }
@@ -122,6 +187,7 @@ export class GameService {
     return this.http.put(`${this.apiUrl}/${gameId}/change-opposite-final-score`, { newScore });
   }
   
+
 
   }
 

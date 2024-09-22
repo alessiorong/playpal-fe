@@ -92,8 +92,48 @@
         <button id="aggiungi" class="btn btn-primary mt-3" (click)="addPlayerStat()">Aggiungi</button>
         
     </div>
+
 }
+
+
+@if (!statisticsLocked && playerStats.length > 0) {
+    <div class="mb-3">
+        <!-- Dropdown per selezionare il giocatore in base alle statistiche di gioco -->
+        <label for="playerSelect" class="form-label">Seleziona Giocatore:</label>
+        <select id="playerSelect" [(ngModel)]="selectedPlayerStatId" class="form-select">
+            @for (playerStat of playerStats; track playerStat.id) { 
+                <option [value]="playerStat.id">{{playerStat.playerFirstname}} {{playerStat.playerLastname}}</option>
+            }
+        </select>
+
+        <!-- Dropdown per selezionare l'azione da rimuovere -->
+        <label for="actionSelect" class="form-label mt-3">Seleziona Azione da Rimuovere:</label>
+        <select id="actionSelect" [(ngModel)]="selectedAction" class="form-select">
+            <option value="points">Punti</option>
+            <option value="assist">Assist</option>
+            <option value="oRebound">Rimbalzo Offensivo</option>
+            <option value="dRebound">Rimbalzo Difensivo</option>
+            <option value="steal">Palla Recuperata</option>
+            <option value="block">Stoppata</option>
+            <option value="turnover">Palla Persa</option>
+            <option value="ftm">Tiro Libero Segnato</option>
+            <option value="fta">Tiro Libero Tentato</option>
+            <option value="twoPointsMade">2 Punti Segnati</option>
+            <option value="twoPointsAttempted">2 Punti Tentati</option>
+            <option value="threePointsMade">3 Punti Segnati</option>
+            <option value="threePointsAttempted">3 Punti Tentati</option>
+        </select>
+
+        <!-- Pulsante per rimuovere l'azione selezionata -->
+        <button class="btn btn-danger mt-3" (click)="removeAction(selectedPlayerStatId, selectedAction)">Rimuovi Azione</button>
+    </div>
+}
+
+
+
 
 <button id="lock" class="btn btn-warning mt-3" (click)="lockStatistics()" [disabled]="statisticsLocked" >Partita Finita</button>
 <button id="indietro" class="btn btn-secondary mt-3" (click)="goBack()">Indietro</button>
+
+
 

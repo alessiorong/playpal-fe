@@ -7,6 +7,7 @@ import { PlayerService } from '../service/player/player.service';
 import { TeamService } from '../service/team/team.service';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-statistics',
   standalone: true,
@@ -22,7 +23,10 @@ export class StatisticsComponent implements OnInit {
   gameId!: number;
   teamId!: number;
   selectedPlayerId!: number;
+  selectedPlayerStatId!: number;
   statisticsLocked : boolean = false;
+  selectedAction: any;
+
 
   constructor(
     private gameService : GameService,
@@ -39,10 +43,7 @@ export class StatisticsComponent implements OnInit {
       this.loadPlayerStats();
       this.loadGameDetails();
     });
-    const locked = localStorage.getItem('statisticsLocked');
-    if (locked === 'true') {
-      this.statisticsLocked = true;
-    }
+  
   }
 
   loadGameDetails(): void {
@@ -149,8 +150,9 @@ export class StatisticsComponent implements OnInit {
 }
 
 
-  addPoints(playerStatId: number|undefined, points: number): void {
-    this.gameService.addPoints(playerStatId!, points).subscribe({
+addPoints(playerStatId: number|undefined, points: number): void {
+  if (playerStatId !== undefined) {
+    this.gameService.addPoints(playerStatId, points).subscribe({
       next: () => {
         this.loadPlayerStats();
       },
@@ -158,7 +160,10 @@ export class StatisticsComponent implements OnInit {
         console.error('Errore nell\'aggiunta dei punti');
       }
     });
+  } else {
+    console.error('playerStatId non valido');
   }
+}
 
   addAssist(playerStatId: number|undefined, assist : number): void {
     this.gameService.addAssist(playerStatId!, assist).subscribe({
@@ -300,11 +305,64 @@ export class StatisticsComponent implements OnInit {
 
   lockStatistics() : void {
     this.statisticsLocked = true;
-    localStorage.setItem('statisticsLocked', 'true');
   }
 
-
+  removeAction(statId: number, action: string) {
+    console.log('Stat ID:', statId, 'Action:', action); 
+    switch (action) {
+      case 'points':
+        this.gameService.removePoints(statId, 1).subscribe();
+        break;
+      case 'assist':
+        this.gameService.removeAssist(statId, 1).subscribe();
+        break;
+      case 'oRebound':
+        this.gameService.removeORebound(statId, 1).subscribe();
+        break;
+      case 'dRebound':
+        this.gameService.removeDRebound(statId, 1).subscribe();
+        break;
+      case 'steal':
+        this.gameService.removeSteal(statId, 1).subscribe();
+        break;
+      case 'block':
+        this.gameService.removeBlock(statId, 1).subscribe();
+        break;
+      case 'turnover':
+        this.gameService.removeTurnover(statId, 1).subscribe();
+        break;
+      case 'ftm':
+        this.gameService.removeFTM(statId, 1).subscribe();
+        break;
+      case 'fta':
+        this.gameService.removeFTA(statId, 1).subscribe();
+        break;
+      case 'twoPointsMade':
+        this.gameService.removeTwoPointsMade(statId, 1).subscribe();
+        break;
+      case 'twoPointsAttempted':
+        this.gameService.removeTwoPointsAttempted(statId, 1).subscribe();
+        break;
+      case 'threePointsMade':
+        this.gameService.removeThreePointsMade(statId, 1).subscribe();
+        break;
+      case 'threePointsAttempted':
+        this.gameService.removeThreePointsAttempted(statId, 1).subscribe();
+        break;
+      default:
+        console.error('Azione non riconosciuta');
+    }
+  }
   
+  
+  
+  
+  
+  
+  
+  
+  
+    
 
 
 
@@ -318,3 +376,4 @@ export class StatisticsComponent implements OnInit {
 
 
 }
+
